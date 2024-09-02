@@ -38,7 +38,7 @@ class AuthController {
             })
             res.status(200).json({
                 message : "Login successful",
-                user : token
+                token : token
             })
         }
         
@@ -46,3 +46,5 @@ class AuthController {
         
     }
 }
+
+export default AuthController
