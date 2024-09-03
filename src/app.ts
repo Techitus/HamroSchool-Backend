@@ -2,7 +2,7 @@ import express from 'express';
 const app = express();
 import dotenv from 'dotenv';
 import adminSeeder from './adminSeeder';
-import userRoutes from './routes/userRouter';
+import userRoutes from './routes/userRoutes';
 dotenv.config()
 require('./database/connection')
 app.use(express.json())

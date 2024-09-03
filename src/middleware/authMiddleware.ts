@@ -5,7 +5,7 @@ import User from "../database/models/user";
 
 dotenv.config();
 
-interface AuthRequest extends Request {
+export interface AuthRequest extends Request {
     user?: {
         id: string;
         email: string;
