@@ -19,6 +19,8 @@ sequelize.authenticate().then(()=>{
 
 sequelize.sync({force : false}).then(()=>{
     console.log("Database sync successful")
+}).catch((err)=>{    
+    console.log(err)
 })
 
 export default sequelize
