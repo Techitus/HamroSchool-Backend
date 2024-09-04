@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import User from "../database/models/user";
+import User from "../database/models/userModel";
 
 dotenv.config();
 
@@ -14,12 +14,12 @@ export interface AuthRequest extends Request {
     }
 }
 
-enum Role {
+export enum Role {
     Admin = "admin",
 }
 
 class AuthMiddleware {
-    isAuthenticated(req: AuthRequest, res: Response, next: NextFunction) {
+   async isAuthenticated(req: AuthRequest, res: Response, next: NextFunction) {
         const token = req.headers.authorization;
         if (!token || token === undefined) {
             res.status(401).json({
@@ -65,5 +65,5 @@ class AuthMiddleware {
         };
     }
 }
-
-export default AuthMiddleware;
+const authMiddleware = new AuthMiddleware()
+export default authMiddleware;

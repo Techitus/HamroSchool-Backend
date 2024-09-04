@@ -3,10 +3,12 @@ const app = express();
 import dotenv from 'dotenv';
 import adminSeeder from './adminSeeder';
 import userRoutes from './routes/userRoutes';
+import settingRoutes from './routes/settingRoutes';
 dotenv.config()
 require('./database/connection')
 app.use(express.json())
 app.use("", userRoutes)
+app.use("/admin/setting", settingRoutes)
 adminSeeder()
 
 

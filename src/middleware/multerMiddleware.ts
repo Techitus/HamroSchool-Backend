@@ -3,7 +3,7 @@ import multer from "multer";
 
 const storage = multer.diskStorage({
     destination : (req:Request,file:Express.Multer.File,cb:Function)=>{
-        const allowedFileType = [".jpg",".jpeg",".png",".gif",".svg"]
+        const allowedFileType = ["image/jpg","image/jpeg","image/png","image/svg"]
         if(!allowedFileType.includes(file.mimetype)){
             cb(new Error("File type not allowed"),false)
             return

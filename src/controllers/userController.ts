@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import User from "../database/models/user";
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
+import User from "../database/models/userModel";
 dotenv.config()
 class AuthController {
     public static async loginUser(req:Request,res:Response):Promise<void>{
@@ -13,7 +13,7 @@ class AuthController {
             })
             return
         }
-        const [user] = await User.findAll({
+        const [user]= await User.findAll({
             where :{
                 email : email
             }

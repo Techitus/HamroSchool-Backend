@@ -4,7 +4,6 @@ import {
      Model,
      DataType,
      CreatedAt} from 'sequelize-typescript'
-
 @Table({
     tableName:"users",
     modelName:"User",
@@ -33,8 +32,8 @@ class User extends Model{
      declare password: string
 
      @Column({
-        type:DataType.ENUM('admin','customer'),
-        defaultValue:'customer'
+        type:DataType.STRING,
+    
     })
     declare role :string
 
