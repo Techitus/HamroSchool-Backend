@@ -16,7 +16,7 @@ class Menu extends Model{
         type:DataType.STRING,
 
     })
-    declare title: string
+    declare menuTitle: string
 
     @Column({
         type:DataType.STRING,
