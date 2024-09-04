@@ -43,6 +43,7 @@ public static async updateSetting(req:AuthRequest,res:Response):Promise<void>{
     try{
         const {title,onlineAdmission,recieveEmail,workingHours,logo,address,themeOptions,borderRadius,mobileNo,email,footerText,copyrightText,facebookUrl,youtubeurl} = req.body
         let filename;
+        const {id} = req.params
         if (req.file){
             filename = req.file?.filename
         }else{
@@ -66,7 +67,7 @@ public static async updateSetting(req:AuthRequest,res:Response):Promise<void>{
     
         },{
             where:{
-                id:req.params.id
+                id:id
             }
         })
         res.status(200).json({
