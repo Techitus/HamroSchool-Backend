@@ -2,8 +2,7 @@ import {
     Table, 
     Column,
      Model,
-     DataType,
-     CreatedAt} from 'sequelize-typescript'
+     DataType} from 'sequelize-typescript'
 @Table({
     tableName:"menus",
     modelName:"Menu",
