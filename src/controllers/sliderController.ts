@@ -102,4 +102,4 @@ class sliderController {
     }
 }
 
-export default new sliderController()
+export default sliderController

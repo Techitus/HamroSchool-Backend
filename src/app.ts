@@ -5,12 +5,15 @@ import adminSeeder from './adminSeeder';
 import userRoutes from './routes/userRoutes';
 import settingRoutes from './routes/settingRoutes';
 import menuRoutes from './routes/menuRoutes';
+import sliderRoutes from './routes/sliderRouter';
 dotenv.config()
 require('./database/connection')
 app.use(express.json())
 app.use("", userRoutes)
 app.use("/admin/setting", settingRoutes)
 app.use("/admin/menu", menuRoutes)
+app.use("/admin/slider", sliderRoutes)
+
 adminSeeder()
 
 
