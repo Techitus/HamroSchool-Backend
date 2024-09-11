@@ -1,3 +1,4 @@
+import { UUID } from 'crypto'
 import {
     Table, 
     Column,
@@ -10,6 +11,12 @@ import {
 })
 
 class Feature extends Model{
+    @Column({
+        type:DataType.UUID,
+        primaryKey:true,
+        defaultValue:DataType.UUIDV4
+        })
+    declare id: string
     
     @Column({
         type:DataType.STRING,
