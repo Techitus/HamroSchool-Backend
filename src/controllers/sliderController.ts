@@ -5,6 +5,13 @@ import Slider from "../database/models/slider";
 class sliderController {
     public static async addSlider(req:AuthRequest,res:Response):Promise<void>{
         const {sliderTitle,position,buttonText1,buttonText2,buttonUrl1,buttonUrl2,description,sliderImage} = req.body
+           let fileName;
+           if (req.file){
+               fileName = req.file?.filename
+           }else{
+               fileName = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_J64H9TeNc_w3Oo8fZ9vWpn8jLVG9bO9toQ&s"
+           }
+       
         try{
             const slider = await Slider.create({
                 sliderTitle,
@@ -14,7 +21,7 @@ class sliderController {
                 buttonUrl1,
                 buttonUrl2,
                 description,
-                sliderImage
+                sliderImage : fileName
             })
             res.status(200).json({
                 message : "Slider added successfully",

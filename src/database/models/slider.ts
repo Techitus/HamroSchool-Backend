@@ -10,6 +10,12 @@ import {
 })
 
 class Slider extends Model{
+    @Column({
+        type:DataType.UUID,
+        primaryKey:true,
+        defaultValue:DataType.UUIDV4
+        })
+    declare id: string
     
     @Column({
         type:DataType.STRING,
