@@ -6,8 +6,10 @@ class ServiceController{
     public static async addSercive(req:AuthRequest, res:Response):Promise<void>{
         const { serviceTitle, serviceIcon, description } = req.body;
         let fileName
-        if(! req.file){
-            fileName = null
+        if(req.file){
+            fileName = req.file?.filename;
+        }else{
+            fileName = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_J64H9TeNc_w3Oo8fZ9vWpn8jLVG9bO9toQ&s"
         }
         const service = await Service.create({
             serviceTitle,
@@ -38,12 +40,15 @@ class ServiceController{
      public static async updateService(req:AuthRequest, res:Response):Promise<void>{
         const { serviceTitle, serviceIcon, description } = req.body;
         const {id} = req.params
-        let fileName
-        if(! req.file){
-            fileName = null
-        }
+        let fileName;
+        if(req.file){
+            fileName = req.file.filename;
+                }else{
+                    fileName = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_J64H9TeNc_w3Oo8fZ9vWpn8jLVG9bO9toQ&s"
+                }
         try{
-            await Service.update({
+            
+      const updated = await Service.update({
                 serviceTitle,
                 serviceIcon : fileName,
                 description,
@@ -54,7 +59,8 @@ class ServiceController{
                 }
             })
             res.status(200).json({
-                message:"Service Updated Successfully"
+                message:"Service Updated Successfully",
+                updated
             })
         }catch(err){
             res.status(500).json({
