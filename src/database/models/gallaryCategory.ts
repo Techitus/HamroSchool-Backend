@@ -10,7 +10,7 @@ import {
     timestamps:true
 })
 
-class Faq extends Model{
+class galaryCategory extends Model{
     @Column({
         type:DataType.UUID,
         primaryKey:true,
@@ -28,4 +28,4 @@ class Faq extends Model{
    
 }
 
-export default Faq
+export default galaryCategory
