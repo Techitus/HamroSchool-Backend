@@ -9,6 +9,7 @@ import sliderRoutes from './routes/sliderRouter';
 import featureRoutes from './routes/featureRoute';
 import testimonialRoutes from './routes/testimonialRoute';
 import serviceRoutes from './routes/serviceRoute';
+import faqRoutes from './routes/faqRoutes';
 dotenv.config()
 require('./database/connection')
 app.use(express.json())
@@ -19,6 +20,7 @@ app.use("/admin/slider", sliderRoutes)
 app.use("/admin/feature", featureRoutes)
 app.use("/admin/testimonial", testimonialRoutes)
 app.use("/admin/service", serviceRoutes)
+app.use("/admin/faq", faqRoutes)
 adminSeeder()
 
 
