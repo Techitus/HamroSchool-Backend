@@ -4,11 +4,11 @@ import Faq from "../database/models/faq";
 
 class FaqController {
     public static async addFaq(req:AuthRequest, res:Response):Promise<void>{
-        const { faqTitle, faqDescription } = req.body;
+        const { faqTitle, description } = req.body;
        try{
         const faq = await Faq.create({
             faqTitle,
-            faqDescription
+            description
         })
         res.status(201).json({
             message:"Faq Added Successfully",
@@ -39,13 +39,13 @@ class FaqController {
     }
    
      public static async updateFaq(req:AuthRequest, res:Response):Promise<void>{
-        const { faqTitle, faqDescription } = req.body;
+        const { faqTitle, description } = req.body;
         const {id} = req.params
         try{
             
       const updated = await Faq.update({
                 faqTitle,
-                faqDescription,
+                description,
                 
             },{
                 where:{
