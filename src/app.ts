@@ -11,6 +11,7 @@ import testimonialRoutes from './routes/testimonialRoute';
 import serviceRoutes from './routes/serviceRoute';
 import faqRoutes from './routes/faqRoutes';
 import galCatRoutes from './routes/galCatRoutes';
+import gallaryRoutes from './routes/gallaryRoutes';
 dotenv.config()
 require('./database/connection')
 app.use(express.json())
@@ -23,6 +24,7 @@ app.use("/admin/testimonial", testimonialRoutes)
 app.use("/admin/service", serviceRoutes)
 app.use("/admin/faq", faqRoutes)
 app.use("/admin/gallaryCategory", galCatRoutes)
+app.use("/admin/gallary", gallaryRoutes)
 adminSeeder()
 
 
