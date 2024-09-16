@@ -1,4 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
+import gallaryCategory from './models/gallaryCategory';
+import Gallary from './models/gallary';
 
 
 const sequelize = new Sequelize({
@@ -22,5 +24,8 @@ sequelize.sync( {force:false} ).then(()=>{
 }).catch((err)=>{    
     console.log("unable to sync database",err)
 })
+
+gallaryCategory.hasMany(Gallary, {foreignKey: 'galCategory'})
+Gallary.belongsTo(gallaryCategory, {foreignKey: 'galCategory'})
 
 export default sequelize

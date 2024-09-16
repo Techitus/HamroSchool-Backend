@@ -1,16 +1,15 @@
-import { UUID } from 'crypto'
 import {
     Table, 
     Column,
      Model,
      DataType} from 'sequelize-typescript'
 @Table({
-    tableName:"gallryCategories",
-    modelName:"GallaryCategory",
+    tableName:"gallaries",
+    modelName:"Gallary",
     timestamps:true
 })
 
-class gallaryCategory extends Model{
+class Gallary extends Model{
     @Column({
         type:DataType.UUID,
         primaryKey:true,
@@ -22,10 +21,19 @@ class gallaryCategory extends Model{
         type:DataType.STRING,
 
     })
-    declare galCategory: string
+    declare gallaryTitle: string
 
+    @Column({
+        type:DataType.STRING,
+    })
+     declare description: string
+
+    @Column({
+        type:DataType.STRING,
+
+    })
+    declare thumbImage: string
     
-   
 }
 
-export default gallaryCategory
+export default Gallary

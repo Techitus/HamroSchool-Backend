@@ -1,13 +1,13 @@
 import { Response } from "express";
 import { AuthRequest } from "../middleware/authMiddleware";
-import galaryCategory from "../database/models/gallaryCategory";
+import gallaryCategory from "../database/models/gallaryCategory";
 
 class galCatController{
     public static async addGallaryCategory(req:AuthRequest, res:Response):Promise<void>{
-        const { category } = req.body;
+        const { galCategory } = req.body;
         try {
-            const gallaryCategory = await galaryCategory.create({
-    category
+             await gallaryCategory.create({
+                galCategory
                 
             })
             res.status(201).json({
@@ -22,10 +22,10 @@ class galCatController{
     }
      public static async getGallaryCategory(req:AuthRequest, res:Response):Promise<void>{
         try{
-            const gallaryCategory = await galaryCategory.findAll()
+            const gallaryCategoryData = await gallaryCategory.findAll()
             res.status(200).json({
                 message:"Gallary Category Fetched Successfully",
-                gallaryCategory
+                gallaryCategoryData
             })
         
 
@@ -36,12 +36,12 @@ class galCatController{
         }
     }
    public static async updateGallaryCategory(req:AuthRequest, res:Response):Promise<void>{
-        const { category } = req.body;
+        const { galCategory } = req.body;
         const {id} = req.params
         try{
             
-      const updated = await galaryCategory.update({
-                category,
+      const updatedData = await gallaryCategory.update({
+        galCategory,
                 
             },{
                 where:{
@@ -50,7 +50,7 @@ class galCatController{
             })
             res.status(200).json({
                 message:"Gallary Category Updated Successfully",
-                updated
+                updatedData
             })
         }catch(err){
             res.status(500).json({
@@ -61,13 +61,13 @@ class galCatController{
    public static async deleteGallaryCategory(req:AuthRequest, res:Response):Promise<void>{
        const {id} = req.params    
        try{
-           const gallaryCategory = await galaryCategory.findAll({
+           const gallaryCategoryData = await gallaryCategory.findAll({
                where:{
                    id:id
                }
            })
-           if(gallaryCategory.length > 0){
-               await galaryCategory.destroy({
+           if(gallaryCategoryData.length > 0){
+               await gallaryCategory.destroy({
                    where:{
                        id:id
                    }
