@@ -27,7 +27,13 @@ class Gallary extends Model{
         type:DataType.STRING,
     })
      declare description: string
+     @Column({
+        type:  DataType.ENUM( 'show', 'hide'),
+        allowNull:false,
+        defaultValue:'show'
 
+    })
+    declare status: string
     @Column({
         type:DataType.STRING,
 
