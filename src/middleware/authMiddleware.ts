@@ -11,7 +11,10 @@ export interface AuthRequest extends Request {
         email: string;
         password: string;
         role: string;
-    }
+    },
+    gallaryCategory?: {
+        id: string;
+    };
 }
 
 export enum Role {

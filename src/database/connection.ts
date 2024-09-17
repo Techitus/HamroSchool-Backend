@@ -25,7 +25,8 @@ sequelize.sync( {force:false} ).then(()=>{
     console.log("unable to sync database",err)
 })
 
-gallaryCategory.hasMany(Gallary, {foreignKey: 'galCategory'})
-Gallary.belongsTo(gallaryCategory, {foreignKey: 'galCategory'})
+gallaryCategory.hasMany(Gallary, {foreignKey: 'galCatId'})
+Gallary.belongsTo(gallaryCategory, {foreignKey: 'galCatId'})
+
 
 export default sequelize

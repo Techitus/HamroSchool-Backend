@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import { AuthRequest } from "../middleware/authMiddleware";
 import Gallary from "../database/models/gallary";
 
@@ -6,19 +6,25 @@ class gallaryController {
    
     public static async addGallary(req:AuthRequest,res:Response):Promise<void>{
         try{
+          const galCatId = req.gallaryCategory?.id
+          console.log(galCatId)
         const {gallaryTitle,description,thumbImage, status} = req.body
+        
         let fileName
         if(req.file){
             fileName = req.file.originalname
         }
+
         const gallary = await Gallary.create({
             gallaryTitle,
             description,
             status,
-            thumbImage : fileName
+            thumbImage : fileName,
+             galCatId
         })
         res.status(201).json({
             message:"Gallary added successfully",
+            gallary
         })
    }catch(err){
     res.status(500).json({
@@ -39,7 +45,7 @@ public static async getGallary(req:AuthRequest, res:Response):Promise<void>{
     }catch(err){
         res.status(500).json({
             message:"Error while getting gallary",
-            error:err
+            
         })
     }
 
