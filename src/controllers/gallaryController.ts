@@ -1,15 +1,13 @@
 import { Request, Response } from "express";
 import { AuthRequest } from "../middleware/authMiddleware";
 import Gallary from "../database/models/gallary";
+import gallaryCategory from "../database/models/gallaryCategory";
 
 class gallaryController {
    
     public static async addGallary(req:AuthRequest,res:Response):Promise<void>{
         try{
-          const galCatId = req.gallaryCategory?.id
-          console.log(galCatId)
-        const {gallaryTitle,description,thumbImage, status} = req.body
-        
+        const {gallaryTitle,description,thumbImage, status,galCatId} = req.body
         let fileName
         if(req.file){
             fileName = req.file.originalname
@@ -20,7 +18,7 @@ class gallaryController {
             description,
             status,
             thumbImage : fileName,
-             galCatId
+             galCatId 
         })
         res.status(201).json({
             message:"Gallary added successfully",
@@ -36,7 +34,14 @@ class gallaryController {
 }
 public static async getGallary(req:AuthRequest, res:Response):Promise<void>{
     try{
-      const gallary = await Gallary.findAll()
+      const gallary = await Gallary.findAll(
+        {
+            include : {
+                model : gallaryCategory,
+              attributes : ['id','galCategory']
+            }
+        }
+      )
 
     res.status(200).json({
         message:"Gallary fetched successfully",
