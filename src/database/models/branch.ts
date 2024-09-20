@@ -35,10 +35,16 @@ class Branch extends Model{
     })
     declare email: string
     @Column({
-        type:DataType.NUMBER,
-
+        type:  DataType.STRING,
+        allowNull:false,
+        validate :{
+            len : {
+                args : [10,10],
+                msg : "Phone number must be 10 digits"
+            }
+        }
     })
-    declare mobileNo: number
+    declare mobileNo : string
     @Column({
         type:DataType.STRING,
 

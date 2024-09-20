@@ -13,6 +13,7 @@ import faqRoutes from './routes/faqRoutes';
 import galCatRoutes from './routes/galCatRoutes';
 import gallaryRoutes from './routes/gallaryRoutes';
 import newsRoutes from './routes/newsRoutes';
+import branchRoutes from './routes/branchRoutes';
 dotenv.config()
 require('./database/connection')
 app.use(express.json())
@@ -27,6 +28,7 @@ app.use("/admin/faq", faqRoutes)
 app.use("/admin/gallaryCategory", galCatRoutes)
 app.use("/admin/gallary", gallaryRoutes)
 app.use("/admin/news", newsRoutes)
+app.use("/admin/branch", branchRoutes)
 adminSeeder()
 
 
