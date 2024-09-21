@@ -1,6 +1,12 @@
 import { Sequelize } from 'sequelize-typescript';
 import gallaryCategory from './models/gallaryCategory';
 import Gallary from './models/gallary';
+import Branch from './models/branch';
+import Setting from './models/setting';
+import Menu from './models/menu';
+import Slider from './models/slider';
+import Feature from './models/features';
+import Testimonial from './models/testamonial';
 
 
 const sequelize = new Sequelize({
@@ -28,5 +34,17 @@ sequelize.sync( {force:false} ).then(()=>{
 gallaryCategory.hasOne(Gallary, {foreignKey: 'galCatId'})
 Gallary.belongsTo(gallaryCategory, {foreignKey: 'galCatId'})
 
+Branch.hasMany(Setting, {foreignKey: 'branchId'})
+Setting.belongsTo(Branch, {foreignKey: 'branchId'})
+
+Branch.hasMany(Menu, {foreignKey: 'branchId'})
+Menu.belongsTo(Branch, {foreignKey: 'branchId'})
+
+Branch.hasMany(Slider, {foreignKey: 'branchId'})
+Slider.belongsTo(Branch, {foreignKey: 'branchId'})
+
+
+Branch.hasMany(gallaryCategory, {foreignKey: 'branchId'})    
+gallaryCategory.belongsTo(Branch, {foreignKey: 'branchId'})
 
 export default sequelize
