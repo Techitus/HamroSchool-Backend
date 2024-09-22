@@ -3,6 +3,7 @@ import {
     Column,
      Model,
      DataType} from 'sequelize-typescript'
+import { ParentMenu } from '../../parentMenu'
 @Table({
     tableName:"menus",
     modelName:"Menu",
@@ -35,6 +36,7 @@ class Menu extends Model{
     declare publish :boolean
     @Column({
         type:DataType.STRING,
+        defaultValue : ParentMenu.Home
 
     })
     declare parentMenu: string
