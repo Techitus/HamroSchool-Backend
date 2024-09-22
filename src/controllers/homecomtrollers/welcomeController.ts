@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { AuthRequest } from "../../middleware/authMiddleware";
-import WelcomeText from "../../database/models/page section/home/welcome";
+import WelcomeText from "../../database/models/pagemodels/homemodels/welcome";
 
 class WelcomeController{
     public static async postWelcome(req:AuthRequest,res:Response):Promise<void>{
