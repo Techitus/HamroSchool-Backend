@@ -1,6 +1,6 @@
 import { Response } from "express";
-import Teachers from "../../database/models/pagemodels/homemodels/teacher";
-import { AuthRequest } from "../../middleware/authMiddleware";
+import Teachers from "../database/models/teacher";
+import { AuthRequest } from "../middleware/authMiddleware";
 
 class TeacherController{
     public static async addTeacher(req:AuthRequest,res:Response):Promise<void>{

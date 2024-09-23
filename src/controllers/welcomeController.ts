@@ -1,6 +1,6 @@
 import { Response } from "express";
-import { AuthRequest } from "../../middleware/authMiddleware";
-import WelcomeText from "../../database/models/pagemodels/homemodels/welcome";
+import { AuthRequest } from "../middleware/authMiddleware";
+import WelcomeText from "../database/models/welcome";
 
 class WelcomeController{
     public static async postWelcome(req:AuthRequest,res:Response):Promise<void>{
@@ -35,25 +35,41 @@ class WelcomeController{
     }
     
     public static async updateWelcome(req:AuthRequest,res:Response):Promise<void>{
-        const welcome = await WelcomeText.update(req.body,{
-            where:{
-                id:req.params.id
-            }
-        })
-        res.status(200).json({
-            message:"Welcome Text Updated Successfully",
-            data:welcome
-        })
-    }
+   const {id} = req.params;
+   const {title,subtitle,description,photo,status} = req.body;
+   let fileName
+   if(req.file){
+       fileName = req.file.originalname;
+   }
+
+       const updated = await WelcomeText.update({
+           title,
+           subtitle,
+           description,
+           photo : fileName,
+           status
+       },{
+           where:{
+               id
+           }
+       })    
+       res.status(200).json({  
+           message:"Welcome Text Updated Successfully",
+           data:updated
+       })
+
+   }
+      
+    
     public static async deleteWelcome(req:AuthRequest,res:Response):Promise<void>{
+        const {id} = req.params;
         const welcome = await WelcomeText.destroy({
             where:{
-                id:req.params.id
+                id
             }
         })
         res.status(200).json({
             message:"Welcome Text Deleted Successfully",
-            data:welcome
         })
     }
 }
