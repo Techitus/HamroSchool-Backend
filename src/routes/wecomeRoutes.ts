@@ -1,8 +1,8 @@
 import express, {Router} from 'express'
-import { multer,storage } from '../../middleware/multerMiddleware'
-import authMiddleware, { Role } from '../../middleware/authMiddleware'
-import errorHandler from '../../service/catchAsyncError'
-import WelcomeController from '../../controllers/welcomeController'
+import { multer,storage } from '../middleware/multerMiddleware'
+import authMiddleware, { Role } from '../middleware/authMiddleware'
+import errorHandler from '../service/catchAsyncError'
+import WelcomeController from '../controllers/welcomeController'
 
 const router:Router = express.Router()
 const upload = multer({storage :storage})

@@ -14,8 +14,8 @@ import galCatRoutes from './routes/galCatRoutes';
 import gallaryRoutes from './routes/gallaryRoutes';
 import newsRoutes from './routes/newsRoutes';
 import branchRoutes from './routes/branchRoutes';
-import welcomeRoutes from './routes/home/wecomeRoutes';
-import teacherRoutes from './routes/home/teacherRoutes';
+import welcomeRoutes from './routes/wecomeRoutes';
+import teacherRoutes from './routes/teacherRoutes';
 dotenv.config()
 require('./database/connection')
 app.use(express.json())
