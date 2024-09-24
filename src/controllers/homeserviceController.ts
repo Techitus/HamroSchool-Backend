@@ -11,7 +11,7 @@ class HomeServiceController{
             status
         })
         res.status(201).json({
-            message:"Home Testimonial Added Successfully",
+            message:"Home service Added Successfully",
             data:HomeServices
         })
     }
@@ -22,7 +22,7 @@ class HomeServiceController{
             }
         })
         res.status(200).json({
-            message:"Home Testimonial Fetched Successfully",
+            message:"Home service Fetched Successfully",
             data:HomeServices
         })
     }
@@ -52,7 +52,7 @@ public static async deleteHomeService(req:AuthRequest,res:Response):Promise<void
         }
     })
     res.status(200).json({
-        message:"Home Testimonial Deleted Successfully",
+        message:"Home service Deleted Successfully",
     })
 }
 }

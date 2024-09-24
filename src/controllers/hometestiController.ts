@@ -39,7 +39,7 @@ class HomeTestimonialController{
             }
         })    
         res.status(200).json({  
-            message:"Welcome Text Updated Successfully",
+            message:"home testimonial Updated Successfully",
             data:updated
         })
  

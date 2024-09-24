@@ -18,6 +18,7 @@ import welcomeRoutes from './routes/wecomeRoutes';
 import teacherRoutes from './routes/teacherRoutes';
 import homeserviceRoutes from './routes/homeserviceRoutes';
 import hometestiRoutes from './routes/hometestiRoutes';
+import pageRoutes from './routes/pageRoutes';
 dotenv.config()
 require('./database/connection')
 app.use(express.json())
@@ -37,6 +38,7 @@ app.use("/admin/welcome", welcomeRoutes)
 app.use("/admin/teacher", teacherRoutes)
 app.use("/admin/homeservice", homeserviceRoutes)
 app.use("/admin/hometesti", hometestiRoutes)
+app.use("/admin/page", pageRoutes)
 adminSeeder()
 
 
