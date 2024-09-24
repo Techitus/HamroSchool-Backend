@@ -7,6 +7,7 @@ import Menu from './models/menu';
 import Slider from './models/slider';
 import Feature from './models/features';
 import Testimonial from './models/testamonial';
+import Page from './models/page';
 
 
 const sequelize = new Sequelize({
@@ -46,5 +47,11 @@ Slider.belongsTo(Branch, {foreignKey: 'branchId'})
 
 Branch.hasMany(gallaryCategory, {foreignKey: 'branchId'})    
 gallaryCategory.belongsTo(Branch, {foreignKey: 'branchId'})
+
+Branch.hasOne(Page, {foreignKey: 'branchId'})
+Page.belongsTo(Branch, {foreignKey: 'branchId'})
+
+Menu.hasOne(Page, {foreignKey: 'menuId'})
+Page.belongsTo(Menu, {foreignKey: 'menuId'})
 
 export default sequelize
