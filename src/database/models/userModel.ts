@@ -18,6 +18,12 @@ class User extends Model{
 
     })
     declare id:string
+    @Column({
+        type:DataType.STRING,
+        allowNull:false
+        
+    })
+    declare name: string
 
     @Column({
         type:DataType.STRING,

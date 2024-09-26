@@ -4,6 +4,8 @@ import AuthController from '../controllers/userController'
 const router:Router = express.Router()
 
 router.route('/login').post(errorHandler(AuthController.loginUser))
+router.route('/register').post(errorHandler(AuthController.registerUser))
+
 
 
 

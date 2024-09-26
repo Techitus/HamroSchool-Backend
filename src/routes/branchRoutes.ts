@@ -7,9 +7,9 @@ import BranchController from '../controllers/branchController'
 const router:Router = express.Router()
 const upload = multer({storage :storage})
 
-router.route('/').post(authMiddleware.isAuthenticated, authMiddleware.restrictTo(Role.Admin),upload.single('systemLogo'),errorHandler(BranchController.addBranch))
+router.route('/').post(authMiddleware.isAuthenticated, authMiddleware.restrictTo(Role.superAdmin),upload.single('systemLogo'),errorHandler(BranchController.addBranch))
 .get(BranchController.getBrannch)
-router.route('/:id').patch(authMiddleware.isAuthenticated, authMiddleware.restrictTo(Role.Admin),upload.single('systemLogo'),errorHandler(BranchController.updateBranch)).
+router.route('/:id').patch(authMiddleware.isAuthenticated, authMiddleware.restrictTo(Role.superAdmin),upload.single('systemLogo'),errorHandler(BranchController.updateBranch)).
 delete(authMiddleware.isAuthenticated, authMiddleware.restrictTo(Role.Admin),BranchController.deleteBranch).get( authMiddleware.isAuthenticated,BranchController.getSingleBranch)
 
 

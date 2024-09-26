@@ -5,6 +5,39 @@ import dotenv from 'dotenv'
 import User from "../database/models/userModel";
 dotenv.config()
 class AuthController {
+    public static async registerUser(req:Request, res:Response):Promise<void>{
+        const {name, email, password, role} = req.body
+        if(!name || !email || !password){
+             res.status(400).json({message:"Please provide all the required fields"})
+             return
+        }
+        try{
+            const existinguser = await User.findOne({
+                where : {
+                    email : email ,  
+                    name :name
+                }
+
+            })
+            if(existinguser){
+                res.status(400).json({message:"User already exists"})
+                return
+            }
+        User.create({
+            name ,
+            email,
+            password : bcrypt.hashSync(password, 8),
+            role
+
+        })
+        res.status(201).json({message:"User created successfully"})
+
+        }catch(error){
+            res.status(500).json({message:"Internal server error"})
+            return
+        }
+
+    }
     public static async loginUser(req:Request,res:Response):Promise<void>{
         const { email,password } = req.body
         if(!email || !password){
